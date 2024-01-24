@@ -1,3 +1,4 @@
+//Tableau diapo
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -16,3 +17,17 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+
+//Variables
+const arrowLeft = document.querySelector(".arrow_left")
+const arrowRight = document.querySelector(".arrow_right")
+
+//EventListener des boutons fleches gauche et droite
+arrowLeft.addEventListener("click", function(e){
+	console.log("click gauche")
+	console.log(e.target.alt)
+  })
+
+arrowRight.addEventListener("click", function(){
+	console.log("click droit")
+  })
