@@ -29,12 +29,18 @@ let i = 0
 //EventListener des boutons fleches gauche et droite
 arrowLeft.addEventListener("click", function(){
 	i--
+	if (i === -1) {
+		i = slides.length - 1
+	}
 	img.src = "./assets/images/slideshow/" + slides[i].image
 	texte.innerHTML = slides[i].tagLine
   })
 
 arrowRight.addEventListener("click", function(){
 	i++
+	if (i === slides.length) {
+		i = 0
+	}
 	img.src = "./assets/images/slideshow/" + slides[i].image
 	texte.innerHTML = slides[i].tagLine
   })
