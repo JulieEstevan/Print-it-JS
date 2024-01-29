@@ -21,13 +21,29 @@ const slides = [
 //Variables
 const arrowLeft = document.querySelector(".arrow_left")
 const arrowRight = document.querySelector(".arrow_right")
+const dotsContainer = document.querySelector(".dots")
+const img = document.querySelector(".banner-img")
+const texte = document.querySelector(".txt")
+let i = 0
 
 //EventListener des boutons fleches gauche et droite
-arrowLeft.addEventListener("click", function(e){
-	console.log("click gauche")
-	console.log(e.target.alt)
+arrowLeft.addEventListener("click", function(){
+	i--
+	img.src = "./assets/images/slideshow/" + slides[i].image
+	texte.innerHTML = slides[i].tagLine
   })
 
 arrowRight.addEventListener("click", function(){
-	console.log("click droit")
+	i++
+	img.src = "./assets/images/slideshow/" + slides[i].image
+	texte.innerHTML = slides[i].tagLine
   })
+
+//Bullets point
+for (let j = 0; j < slides.length; j++) {
+	const dot = document.createElement("div")
+	dot.classList.add("dot")
+	dotsContainer.appendChild(dot)
+  }
+const dots = dotsContainer.querySelectorAll(".dot")
+dots[0].classList.add("dot_selected")
