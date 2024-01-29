@@ -34,6 +34,7 @@ arrowLeft.addEventListener("click", function(){
 	}
 	img.src = "./assets/images/slideshow/" + slides[i].image
 	texte.innerHTML = slides[i].tagLine
+	dynamicBulletsPoint(i)
   })
 
 arrowRight.addEventListener("click", function(){
@@ -43,6 +44,7 @@ arrowRight.addEventListener("click", function(){
 	}
 	img.src = "./assets/images/slideshow/" + slides[i].image
 	texte.innerHTML = slides[i].tagLine
+	dynamicBulletsPoint(i)
   })
 
 //Bullets point
@@ -53,3 +55,13 @@ for (let j = 0; j < slides.length; j++) {
   }
 const dots = dotsContainer.querySelectorAll(".dot")
 dots[0].classList.add("dot_selected")
+
+function dynamicBulletsPoint(count) {
+	dots.forEach((dot, index) => {
+	  if (index === count) {
+		dot.classList.add("dot_selected");
+	  } else {
+		dot.classList.remove("dot_selected");
+	  }
+	});
+  }
