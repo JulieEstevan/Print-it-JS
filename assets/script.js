@@ -22,41 +22,40 @@ const slides = [
 const arrowLeft = document.querySelector(".arrow_left")
 const arrowRight = document.querySelector(".arrow_right")
 const dotsContainer = document.querySelector(".dots")
-const img = document.querySelector(".banner-img")
-const texte = document.querySelector(".txt")
-let i = 0
+const bannerImage = document.querySelector(".banner-img")
+const bannerText = document.querySelector(".txt")
+let index = 0
 
 //EventListener des boutons fleches gauche et droite
+let updateBannerImageAndText = () => {
+	bannerImage.src = "./assets/images/slideshow/" + slides[index].image
+	bannerText.innerHTML = slides[index].tagLine
+}
+
 arrowLeft.addEventListener("click", function(){
-	i--
-	if (i === -1) {
-		i = slides.length - 1
-	}
-	img.src = "./assets/images/slideshow/" + slides[i].image
-	texte.innerHTML = slides[i].tagLine
-	dynamicBulletsPoint(i)
+	index--
+	if (index === -1) { index = slides.length - 1 }
+	updateBannerImageAndText()
+	dynamicBulletsPoint(index)
   })
 
 arrowRight.addEventListener("click", function(){
-	i++
-	if (i === slides.length) {
-		i = 0
-	}
-	img.src = "./assets/images/slideshow/" + slides[i].image
-	texte.innerHTML = slides[i].tagLine
-	dynamicBulletsPoint(i)
+	index++
+	if (index === slides.length) { index = 0 }
+	updateBannerImageAndText()
+	dynamicBulletsPoint(index)
   })
 
 //Bullets point
-for (let j = 0; j < slides.length; j++) {
+for (let i = 0; i < slides.length; i++) {
 	const dot = document.createElement("div")
 	dot.classList.add("dot")
+	if (i === 0) {dot.classList.add("dot_selected")}
 	dotsContainer.appendChild(dot)
   }
 const dots = dotsContainer.querySelectorAll(".dot")
-dots[0].classList.add("dot_selected")
 
-function dynamicBulletsPoint(count) {
+let dynamicBulletsPoint = (count) => {
 	dots.forEach((dot, index) => {
 	  if (index === count) {
 		dot.classList.add("dot_selected");
